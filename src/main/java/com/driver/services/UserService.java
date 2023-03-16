@@ -23,11 +23,20 @@ public class UserService {
     }
 
     public void deleteUser(int userId){
-        userRepository.deleteById(userId);
+        try {
+            userRepository.deleteById(userId);
+        }catch (Exception e){
+            throw new RuntimeException(e.toString());
+        }
     }
 
     public User updateUser(Integer id, String password){
-       User user=userRepository.findById(id).get();
+        User user=new User();
+        try {
+            user = userRepository.findById(id).get();
+        }catch(Exception e){
+            throw new RuntimeException(e.toString());
+        }
        user.setPassword(password);
        userRepository.save(user);
        return user;
