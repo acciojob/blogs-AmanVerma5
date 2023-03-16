@@ -45,6 +45,12 @@ public class ImageService {
         }
         int screenDim=(screenDimensions.charAt(0)-'0')*(screenDimensions.charAt(2)-'0');
         int imageScreenDim=(image.getDimensions().charAt(0)-'0')*(image.getDimensions().charAt(2)-'0');
-        return screenDim/imageScreenDim;
+        int count=0;
+        try {
+            count=screenDim/imageScreenDim;
+        }catch(ArithmeticException e){
+            throw new RuntimeException(e.toString());
+        }
+        return count;
     }
 }
