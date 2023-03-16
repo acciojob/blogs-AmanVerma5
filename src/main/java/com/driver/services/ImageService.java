@@ -19,7 +19,7 @@ public class ImageService {
         //add an image to the blog
         Image image=new Image();
         image.setDescription(description);
-        image.setDimension(dimensions);
+        image.setDimensions(dimensions);
 
         Blog blog=blogRepository2.findById(blogId).get();
         blog.getImageList().add(image);
@@ -39,7 +39,7 @@ public class ImageService {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
         Image image=imageRepository2.findById(id).get();
         int screenDim=(screenDimensions.charAt(0)-'0')*(screenDimensions.charAt(2)-'0');
-        int imageScreenDim=(image.getDimension().charAt(0)-'0')*(image.getDimension().charAt(2)-'0');
+        int imageScreenDim=(image.getDimensions().charAt(0)-'0')*(image.getDimensions().charAt(2)-'0');
         return screenDim/imageScreenDim;
     }
 }
