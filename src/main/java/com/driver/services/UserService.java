@@ -11,20 +11,20 @@ import java.util.List;
 @Service
 public class UserService {
     @Autowired
-    UserRepository userRepository;
+    UserRepository userRepository3;
 
     public User createUser(String username, String password){
         User user=new User();
         user.setUsername(username);
         user.setPassword(password);
 
-        userRepository.save(user);
+        userRepository3.save(user);
         return user;
     }
 
     public void deleteUser(int userId){
         try {
-            userRepository.deleteById(userId);
+            userRepository3.deleteById(userId);
         }catch (Exception e){
             throw new RuntimeException(e.toString());
         }
@@ -33,12 +33,12 @@ public class UserService {
     public User updateUser(Integer id, String password){
         User user=new User();
         try {
-            user = userRepository.findById(id).get();
+            user = userRepository3.findById(id).get();
         }catch(Exception e){
             throw new RuntimeException(e.toString());
         }
        user.setPassword(password);
-       userRepository.save(user);
+       userRepository3.save(user);
        return user;
     }
 }
