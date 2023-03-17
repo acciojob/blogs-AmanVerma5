@@ -17,6 +17,7 @@ public class User{
     private String Username;
     private String password;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @JoinColumn
     private List<Blog> blogList=new ArrayList<>();
 
 
